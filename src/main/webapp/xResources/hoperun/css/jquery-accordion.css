@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+/* namespace */
+.accordion {
+	width: 200px; height:auto; margin: 5px; font-size: 14px;
+}
+/* ui-icon collapse or expand 采用技术 css sprite */
+.accordion .icon-collapse{
+	width:10px; height:10px;display:inline-block; background-image:url(../img/ui-icons_777777_256x240.png); 
+	background-position: -35px -20px; 
+}
+.accordion .icon-expand{
+	background-position: -66px -20px;
+}
+.accordion a {
+	color: #333;
+}
+.accordion a:hover {
+	color: #c81623;
+}
+/* 同accordion-body将由插件js调用 accaccordion-title */
+.accordion .accordion-title {
+	margin: 0px 0px; padding: 5px; height: 25px; line-height: 25px;	background: #e6efff; 
+	cursor: pointer; border-top: 1px dashed #82AFFF;
+}
+.accordion .accordion-title:hover {
+	font-weight: bold;
+}
+/* accordion-body */
+.accordion .accordion-body {
+	padding-left: 10px;background: white; border:1px solid #e6efff; margin-top: -5px;height:400px;
+}

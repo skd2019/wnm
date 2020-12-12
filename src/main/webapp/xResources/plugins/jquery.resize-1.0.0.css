@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+/* resize */
+.btn-resize-knob {
+	position:absolute;
+	width:10px;
+	height:10px;
+	display:block;
+	background:silver;
+	right:0;
+	bottom:0;		
+	/*left:380px; top:280px;*/
+	cursor:nw-resize;
+	border-radius:0 0 4px 0;
+}

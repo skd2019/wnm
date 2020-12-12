@@ -1,0 +1,23 @@
+/**
+ * spring framework + mybatis.
+ */
+
+**	spring framework5.0.8,最新版本的是5.1.15，在另外的项目可能已经都使用spring boot啦，这个怎是用spring framework的结构。
+	junit 4.12;
+	log4j2
+	jackson:不使用fastjson，如果使用fastjson只要引入pom依赖，不要配置springmc消息转换器，也就是说fastjson只当做工具使用，不可作为框架组成部分。
+	jackson-dataformat-xml:同时引入，请手动指定controller方法返回类型；
+
+**	Cannot change version of project facet Dynamic web module to 2.5...
+	出现这种问题主要是跟我们的maven架构版本比较老有关，问题是我们尝试使用window-properties--project facets修改的时候就出现上面那种错误信息；
+	解决办法是：
+	1> 改写web.xml文件头：强行改为3.0；
+	<?xml version="1.0" encoding="UTF-8"?>
+	<web-app id="WebApp_ID" version="3.0"
+		xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	......	
+	2> D:\workspace4luna\wnm\.settings\org.eclipse.wst.common.project.facet.core.xml,
+	<installed facet="jst.web" version="3.0"/>,强制修改这里，修改前先删除项，用记事本修改，改好后再导入到工作空间中。
+
+	

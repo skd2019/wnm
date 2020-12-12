@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+/* 
+ *	拖动本身只作用于区块，因此.dnd只是一个demo，除position：absolute强制外其他均为可选样式，
+ *		在实际代码项目代码中因为position具有相对性，其参照系受上下文影响，请自行解决。
+ */
+.dnd{
+	width: 400px;height: 300px;position: absolute;border:1px solid #ebedf3;background-color:blue; 
+}
+.dnd .dnd-title{
+	background-color: #82AFFF;text-indent: 5px;line-height:24px;cursor: move;
+}
+.dnd .dnd-content{
+	color:red;
+}
+.moving{
+	opacity:0.5;
+}

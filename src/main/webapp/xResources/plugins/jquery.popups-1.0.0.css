@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+/* 弹出窗口 */
+.popups{
+	display: none;
+}
+.popups .btn-close{
+	position: absolute;top:2px;right:2px;padding: 0 5px 0 5px;
+}

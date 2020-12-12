@@ -1,0 +1,183 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hoperun</groupId>
+	<artifactId>wnm</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>wnm Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<!-- 全局变量 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>5.0.8.RELEASE</spring.version>
+	</properties>
+	
+	<dependencies>
+		<!-- junit 4.12 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- log4j2 start -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+		<!-- log4j2 end -->
+		
+		<!--Spring start --><!--Spring 包按照字母顺序排列 -->
+		<dependency>   <!-- spring-aop -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>   <!-- spring-aspects -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<!-- spring-bean有其他包被动引入，context、aop等等都依赖这个 -->
+		<dependency>   <!-- spring-context -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>   <!-- spring-context-indexer 该包被标注为可选，不是必须要引入的 -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-indexer</artifactId>
+			<version>5.0.8.RELEASE</version>
+			<scope>optional</scope>
+		</dependency>
+		<dependency>  <!-- spring-context-support -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<!-- spring-core属于c组，由多个包依赖被动引入 -->
+		<!-- i组：spring-instrument -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<!-- spring-jcl spring-jdbc 这两个均被动引入 ,j组只需要一个 -->
+		<dependency>   <!-- spring-jms -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<!-- spring-messaging-5.0.8.RELEASE.jar 由spring-jms被动引入 -->
+		<dependency> <!-- o组两个都要 -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>  <!-- 16 spring-test -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>  <!-- 17 spring-tx事务 -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency> <!-- 18 spring-web -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>  <!-- 19 spring-webflux -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<dependency> <!-- 20 spring-webmvc -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>  <!-- 21 spring-websocket -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.0.8.RELEASE</version>
+		</dependency>
+		<!-- spring end -->
+		
+		<!-- 文件上传，这个也很重要，这个是spring文件上传依赖的包 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!--spring-oxm依赖 java bean与xml文档之间的转换 哎,如果没有这个log4j2.xml不起作用，会包在指定文件夹下创建 ， 如果没有这个东西 无法使用我配置的log4j2.xml,日志无法创建 -->
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor-xml</artifactId>
+			<version>1.4.1</version>
+		</dependency>				
+		<!--
+			spring-json依赖   必须要有这个，spring会自动将返回的JsonBean（java对象）序列化成json数据，否则报无法直接传化return type,因此这个包是需要使用自动json转换时候采用的
+			http://localhost:8080/02spring5.0.8release/userInfo/get?id=10
+			HTTP Status 500 - No converter found for return value of type: class spring5.entities.UserInfo -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<dependency>   <!-- java bean 2 xml,同时引入会导致springmvc优先返回xml格式 -->
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		    <version>2.9.5</version>
+		</dependency>
+		<!-- end of all -->		
+	</dependencies>
+	
+	<build>
+		<finalName>wnm</finalName>
+		<plugins>
+			<!-- 指定jdk版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>  <!-- 源码的编译器版本 -->
+					<target>1.8</target>  <!-- class的编译器版本 -->
+				</configuration>
+			</plugin>
+			<!-- 下面这个是maven单元测试用 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>  <!-- 跳过测试 -->
+				</configuration>
+				<version>2.18.1</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

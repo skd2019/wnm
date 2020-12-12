@@ -1,0 +1,20 @@
+/**
+ *
+ */
+ 
+**	塌陷的原因：浮动元素离开文档流，无法撑开父元素	
+	
+	塌陷的解决办法：在父元素末尾添加一个元素 <div style="clear: both;"></div>,其他技术都是基于此；
+	使用css3伪元素:after解决：clear:after是叠加在父元素上，不像上面的会损害dom结构；
+	
+	两种解决方法都有点差，机制使用clearFix:after在dom结构上都添加了一些东西，直接触发父元素bfc设置overflow:hidden即可，只有fbc原理还要深入理解。
+	
+**	display:list-item : 为元素内容生成一个块型盒，随后再生成一个列表型的行内盒。
+	p{
+		display:list-item; list-style:inside square;
+	}
+	p标记就会变成ul-> li显示的模样，对于li来说本身也类似block，尽管他属于ul,其实际width会受ul影响。
+
+**	if (typeof options == 'string') {
+		//使用typeof判断一个变量的类型是否是string
+	}	
